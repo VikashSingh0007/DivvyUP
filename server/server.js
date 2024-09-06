@@ -24,7 +24,9 @@ app.use("/files", express.static("files"));
 app.use(bodyParser.json());
 
 // PORT
-const PORT = 4000;
+// PORT
+const PORT = process.env.PORT || 4000; // Use the PORT from the environment variable or default to 4000 for local dev
+
 
 app.get("/", (req, res) => {
   res.json({ message: "API Working" });
@@ -74,6 +76,6 @@ app.use("/friends", friends);
 app.use("/expense", expense);
 app.use("/individual", individual);
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
   console.log(`Server Started at PORT ${PORT}`);
 });
